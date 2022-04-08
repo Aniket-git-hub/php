@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/grid.css">
+    <script src="./scripts/main.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="title">Student Registration Portal </h1>
+        <h3 class="subtitle">Dr. D. Y. Patil College Of Business And Computer Studies</h3>
+    </header>
+    <main>
+        <article class="form-container">
+            <div class="title">
+                <h1>Registration Form</h1>
+            </div>
+            <form action="./server/index.php" method="POST">
+                <!-- personal detials section     -->
+                <div class="input-group">
+                    <div class="input ">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required title="Enter Name">
+                    </div>
+                    <div class="input">
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" required title="Enter Age">
+                    </div>
+                    <div class="input">
+                        <label for="mobile">Mobile No:</label>
+                        <input type="number" name="mobile" id="mobile" required title="Enter Mobile Number">
+                    </div>
+                    <div class="input">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required title="Enter Email">
+                    </div>
+                    <div class="input">
+                        <label for="address">Address</label>
+                        <textarea name="address" id="address" cols="20" rows="10" required
+                            title="Enter Address"></textarea>
+                    </div>
+                </div>
+                <!-- end of personal detials section -->
+                <!-- course details section -->
+                <div class="input-group row">
+                    <div class="input half ">
+                        <label for="course">Course</label>
+                        <select name="course" id="course" required title="Select Course">
+                            <option disabled selected>Select Course</option>
+                            <option value="BBA.CA">BBA.CA</option>
+                            <option value="BBA">BBA</option>
+                            <option value="BSc">BSc</option>
+                            <option value="MBA">MBA</option>
+                        </select>
+                    </div>
+                    <div class="input half ">
+                        <label for="faculty">Faculty</label>
+                        <select name="faculty" id="faculty" required title="Select Faculty">
+                            <option disabled selected>Select Faculty</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Management">Management</option>
+                            <option value="Science">Science</option>
+                        </select>
+                    </div>
+                    <div class="input ">
+                        <label for="semester">Semester</label>
+                        <select name="semester" id="semester" required title="Select Semester">
+                            <option disabled selected>Select Semester</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                </div>
+                <!-- end of payment details section -->
+                <div class="input-group row right">
+                    <button type="submit" name="submit">Submit</button>
+                </div>
+            </form>
+        </article>
+    </main>
+</body>
+
+</html>
