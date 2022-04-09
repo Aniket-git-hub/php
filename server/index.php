@@ -1,5 +1,4 @@
 <?php
-// create a class student with properties name, age, mobile no, email, address, course, facult, semester
 class Student{
     public $name;
     public $age;
@@ -10,7 +9,7 @@ class Student{
     public $faculty;
     public $semester;
 
-    // create a constructor
+   
     public function __construct($name, $age, $mobile, $email, $address, $course, $faculty, $semester){
         $this->name = $name;
         $this->age = $age;
@@ -21,7 +20,7 @@ class Student{
         $this->faculty = $faculty;
         $this->semester = $semester;
     }
-    // create a method to display student details
+  
     public function display(){
         echo "Name: ".$this->name."<br>";
         echo "Age: ".$this->age."<br>";
@@ -32,13 +31,11 @@ class Student{
         echo "Faculty: ".$this->faculty."<br>";
         echo "Semester: ".$this->semester."<br>";
     }
-    // create a method to store the student details in database
     public function store(){
         $db = new mysqli("localhost", "root", "", "collegeDB");
         if($db->connect_error){
             die("Connection failed: ".$db->connect_error);
         }
-        // if the table is not created then create it
         $sql = "CREATE TABLE IF NOT EXISTS student(
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(30) NOT NULL,
@@ -51,14 +48,19 @@ class Student{
             semester VARCHAR(30) NOT NULL
         )";
         if($db->query($sql) === TRUE){
-            // if the table is created then store the student details in student table
-            $sql = "INSERT INTO student(name, age, mobile, email, address, course, faculty, semester)
-            VALUES('$this->name', '$this->age', '$this->mobile', '$this->email', '$this->address', '$this->course', '$this->faculty', '$this->semester')";
-            if($db->query($sql) === TRUE){
-                echo "Student details are stored successfully";
-            }else{
-                echo "Error: ".$db->error;
-            }
+              $sql = "SELECT * FROM student WHERE name='$this->name' AND age='$this->age' AND mobile='$this->mobile'  ";
+                $result = $db->query($sql);
+                if($result->num_rows > 0){
+                    echo "Student already exists";
+                }else{
+                    $sql = "INSERT INTO student(name, age, mobile, email, address, course, faculty, semester) VALUES('$this->name', '$this->age', '$this->mobile', '$this->email', '$this->address', '$this->course', '$this->faculty', '$this->semester')";
+                    if($db->query($sql) === TRUE){
+                        echo "Student added successfully";
+                    }else{
+                        echo "Error: ".$db->error;
+                    }
+                }
+                
         }else{
             echo "Error: ".$db->error;
         }
@@ -84,6 +86,5 @@ if(isset($_POST['submit'])){
     // store the student details in database
     $student->store();
 }
-
 
 ?>
