@@ -8,6 +8,7 @@ In this project we have created a form in HTML which takes students detials and 
 |- index.html
 |- styles/main.css
 |- styles/grid.css
+|- styles/server.css
 |- scripts/main.js
 |- server/index.php
 |- README.md

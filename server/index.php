@@ -1,4 +1,5 @@
 <?php
+    echo "<link rel='stylesheet' href='../styles/server.css' type='text/css' media='all' />";
 class Student{
     public $name;
     public $age;
@@ -22,14 +23,30 @@ class Student{
     }
   
     public function display(){
-        echo "Name: ".$this->name."<br>";
-        echo "Age: ".$this->age."<br>";
-        echo "Mobile: ".$this->mobile."<br>";
-        echo "Email: ".$this->email."<br>";
-        echo "Address: ".$this->address."<br>";
-        echo "Course: ".$this->course."<br>";
-        echo "Faculty: ".$this->faculty."<br>";
-        echo "Semester: ".$this->semester."<br>";
+        // show data in table format 
+        echo "<table>";
+        echo "<thead><tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Course</th>
+        <th>Faculty</th>
+        <th>Semester</th>
+        </tr></thead>";
+        echo "<tbody><tr>";
+        echo "<td>".$this->name."</td>";
+        echo "<td>".$this->age."</td>";
+        echo "<td>".$this->mobile."</td>";
+        echo "<td>".$this->email."</td>";
+        echo "<td>".$this->address."</td>";
+        echo "<td>".$this->course."</td>";
+        echo "<td>".$this->faculty."</td>";
+        echo "<td>".$this->semester."</td>";
+        echo "</tr></tbody>";
+        echo "</table>";
+
     }
     public function store(){
         $db = new mysqli("localhost", "root", "", "collegeDB");
@@ -48,14 +65,14 @@ class Student{
             semester VARCHAR(30) NOT NULL
         )";
         if($db->query($sql) === TRUE){
-              $sql = "SELECT * FROM student WHERE name='$this->name' AND age='$this->age' AND mobile='$this->mobile'  ";
+              $sql = "SELECT * FROM student WHERE mobile=$this->mobile AND email='$this->email'";
                 $result = $db->query($sql);
                 if($result->num_rows > 0){
-                    echo "Student already exists";
+                    echo "<p class='alert'>Student already exists</p>";
                 }else{
                     $sql = "INSERT INTO student(name, age, mobile, email, address, course, faculty, semester) VALUES('$this->name', '$this->age', '$this->mobile', '$this->email', '$this->address', '$this->course', '$this->faculty', '$this->semester')";
                     if($db->query($sql) === TRUE){
-                        echo "Student added successfully";
+                        echo "<p class='alert success'>Student added successfully</p>";
                     }else{
                         echo "Error: ".$db->error;
                     }
