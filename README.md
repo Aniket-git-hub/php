@@ -18,7 +18,7 @@ If you know more about me and want to know more about me, you can visit.
 
 * My [LinkedIn](https://www.linkedin.com/in/aniket-singh-80371b201/) page.
 
-* My portfolio website is [here](https://www.hello.letsbug.com).
+* My portfolio website is [here](https://hello.letsbug.com).
 
 * My blog is [letsbug.com](https://www.letsbug.com/).
 
